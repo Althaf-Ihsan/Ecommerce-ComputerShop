@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row mt-5">
+        <form enctype="multipart/form-data" method="post" action="/admin/add-products" autocomplete="off">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Product Name</label>
+    <input type="" class="form-control w-50" id="exampleInputEmail1" name="productName" required>
+  </div>
+  <div class="form-group">
+   <label for="dropdown">Category</label>
+  <select class="form-select w-50 bg-light" aria-label="Disabled select example" name="category">
+  <option selected>select</option>
+  <option value="Mobile">Mobile</option>
+  <option value="Computer">Computer</option>
+  <option value="Accessories">laptop</option>
+  <option value="Accessories">Accessories</option>
+</select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Price</label>
+    <input type="" class="form-control w-50" id="exampleInputPassword1"  name="price" required>
+  </div>
+
+ <div class="mb-3">
+  <label for="formFile" class="form-label">image</label>
+  <input class="form-control w-50" type="file" id="formFile"  name="image" required>
+</div>
+ 
+  <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+    </div>
+</div>

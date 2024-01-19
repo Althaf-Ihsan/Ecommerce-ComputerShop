@@ -1,0 +1,27 @@
+{
+  "name": "onlinecomputerstore",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bootstrap": "^5.2.2",
+    "cookie-parser": "~1.4.4",
+    "datatables.net": "^1.13.1",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.4.0",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
+    "mongodb": "^4.10.0",
+    "morgan": "~1.9.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

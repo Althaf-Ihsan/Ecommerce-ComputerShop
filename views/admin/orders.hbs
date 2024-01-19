@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div class="page-title-box">
+        <div class="row align-items-center">
+            <div class="col-sm-6">
+                <h4 class="page-title">All Orders</h4>
+            </div>
+
+        </div> <!-- end row -->
+    </div>
+    <!-- end page-title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+
+                    <table id="datatable" class="table dataTable no-footer"
+                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product Image</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each products}}
+                            <tr>
+                                <th scope="row">{{this.productName}}</th>
+                                <td>{{this.price}}</td>
+                                <td>{{this.category}}</td>
+                                <td><img src="/product-images/{{this._id}}.jpg" height="50" width="50"></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+
+
+
+</div>
+<!-- container-fluid -->
+
+</div>
+<!-- content -->
+
+{{!-- <footer class="footer">
+    © 2019 - 2020 Stexo <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i>
+        by Themesdesign</span>.
+</footer> --}}
+
+</div>

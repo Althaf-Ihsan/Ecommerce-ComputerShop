@@ -1,0 +1,74 @@
+<head>
+     <script  "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<section>
+    <div class="container">
+        <table class="table mt-4">
+            <thead>
+                <th>
+                    <tr>
+                        <th class="" scope="col">Item</th>
+                        <th class="" scope="col">Title</th>
+                        <th class="" scope="col">Price</th>
+                        <th class="" scope="col">Quantity</th>
+                    </tr>
+
+                </th>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <td class=""><img  alt="" style="width:70px;height:70px" src="/product-images/{{this.product._id}}.jpg"></td>
+                    <td class="">{{this.product.productName}}</td>
+                    <td class="">Rs.{{this.product.price}}</td>
+                    <td class=""><button class="cart-item-count mr-3" onclick="changeQuantity( '{{this._id}}' , '{{this.product._id}}' , '{{../user._id}}' , -1 )">-</button>
+                      <span id="{{this.product._id}}">{{this.quantity}}</span>  
+                       <button class="cart-item-count ml-3" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button></td>
+                    <td class="">
+                        <button class="btn btn-danger"onclick="deleteProductCart('{{this._id}}','{{this.product._id}}')">Remove</button>
+                        
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+        {{#if products}}
+        <div class="d-flex justify-content-center">
+            <div class=""> 
+            <h5 class=" ">Total:Rs.<span id="total">{{totalValue}}</span></h5>
+            <a href="/placeOrder" class="btn btn-success mt-3" >Place Order</a></div>
+        </div>
+        {{/if}}
+    </div>
+</section>
+<script>
+    function changeQuantity(cartId,proId,userId,count){
+  let quantity = parseInt(document.getElementById(proId).innerHTML)
+  count=parseInt(count)
+  $.ajax({
+      url:'/change-product-quantity',
+      data:{
+          cart:cartId,
+          product:proId,
+          count:count,
+          user:userId,
+          quantity:quantity
+      },
+      method:'POST',
+       success: function (response) {
+              if (response.removeProduct) {
+                  alert("Product removed from Cart:")
+                  location.reload()
+              } else {
+                  console.log(response)
+                  document.getElementById(proId).innerHTML = quantity + count
+                  document.getElementById('total').innerHTML = response.total
+                  location.reload();
+              }
+          }
+  }
+  )
+ }
+</script>

@@ -1,0 +1,135 @@
+<head>
+    <link rel="stylesheet" href="/stylesheets/placeOrder.css">
+</head>
+ <form   id="checkout-form">
+<div class="container mt-3 px-5">
+
+    <div class="mb-4 ">
+
+        <h2>Confirm order and pay</h2>
+        <span>please make the payment, after that you can enjoy all the features and benefits.</span>
+
+    </div>
+
+    <div class="row">
+
+
+         <div class="col-md-8">
+
+
+            <div class="card p-3">
+
+
+
+                <div class="mt-4 mb-4">
+
+                    <h6 class="text-uppercase">Billing Address</h6>
+
+
+                    <div class="row mt-3">
+
+                        <div class="col-md-6">
+
+                            <div class="inputbox mt-3 mr-2"> <input type="text" name="address" class="form-control"
+                                    required> <span>Street Address</span> </div>
+
+
+                        </div>
+
+
+                      
+
+
+
+
+                    </div>
+
+
+                    <div class="row mt-2">
+
+                        <div class="col-md-6">
+
+                            <div class="inputbox mt-3 mr-2"> <input type="number" name="phone" class="form-control"
+                                    required> 
+                                    <input type="text" name="userId" value="{{user._id}}" hidden>
+                                    <span>Phone</span> </div>
+
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="inputbox mt-3 mr-2"> <input type="text" name="pin" class="form-control"
+                                    required> <span>Zip code</span> </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+          
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card card-blue p-3 text-white mb-3">
+
+                <span>You have to pay</span>
+                <div class="d-flex flex-row align-items-end mb-3">
+                    <h1 class="mb-0 yellow">Rs.{{Total}}</h1>
+                </div>
+
+                <span ><input type="radio"  name="payment-method" value="ONLINE" > Online Payment</span>
+                <span ><input type="radio" name="payment-method" value="COD"checked> COD</span>
+
+
+            </div>
+
+        </div>
+          <div class="mt-4 mb-4 d-flex justify-content-between">
+
+
+                <span></span>
+
+
+                <button class="btn btn-success px-3" type="submit">Pay Rs.{{Total}}</button>
+
+
+
+
+            </div>
+
+    </div>
+
+
+</div>
+   </form>
+   <script>
+     $("#checkout-form").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/placeOrder',
+            method: 'POST',
+            data: $('#checkout-form').serialize(),
+            success: (response) => {
+                console.log(response)
+                if(response.status)
+                {
+                    location.href='/order-complete'
+                }
+            }
+        })
+        }
+        )
+     
+   </script>

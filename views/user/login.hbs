@@ -1,0 +1,104 @@
+<style>
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+    .hide2 {
+    display: none;
+  }
+
+  .show2 {
+    display: block;
+  }
+   
+</style>
+
+<body>
+  <section class="vh-100 p-4" style="background-color: #eee;">
+    <div class="container h-75">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
+                  {{#if error}}
+                  <div class="alert alert-danger mt-1 text-center" role="alert">
+                     <p>{{error}}</p>
+                    </div>
+                  {{/if}}
+                  <form method="post" action="/login" name="myForm">
+                    <div class="alert alert-danger hide " role="alert">
+                     <span id="error"></span>
+                    </div>
+                    <div class="form-group ">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control mt-2" style="background-color:rgba(226, 230, 231, 0.781)"
+                        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                    </div>
+                    <div class="alert alert-danger mt-4 hide2" role="alert">
+                      Enter Password!
+                    </div>
+                    <div class="form-group mt-2">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control mt-2" id="exampleInputPassword1"
+                        style="background-color:rgba(226, 230, 231, 0.781)" placeholder="Password" name="password">
+                    </div>
+
+                    <div class="form-check d-flex justify-content-center mb-3 mt-2">
+                      <label class="form-check-label" for="form2Example3">
+                        Don't have account <a href="/signup" style="text-decoration:none">Register</a>
+                      </label>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn btn-secondary " onclick=" return validate()">Sign in</button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    const header=document.querySelector(".hide");
+    const header2=document.querySelector(".hide2");
+    function validate() {
+      var email = document.myForm.email.value;
+      var password = document.myForm.password.value;
+      const regex_pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (email == "") {
+        document.getElementById("error").innerHTML = 'Enter Email!';
+        header.classList.add("show")
+        return false;
+      }
+      else if (!regex_pattern.test(email)) {
+
+       document.getElementById("error").innerHTML = 'Enter  valid Email!';
+        header.classList.add("show")
+        return false;
+      }
+      else if (password == "") {
+     header.classList.remove("show")
+     header2.classList.add("show2")
+        return false;
+
+      }
+      else {
+        return true;
+      }
+
+
+    }
+    
+  </script>
+</body>

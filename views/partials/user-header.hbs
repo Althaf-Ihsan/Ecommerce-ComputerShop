@@ -1,0 +1,39 @@
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+   <a class="navbar-brand fw-bolder fs-2 text-white ps-5 " href="/home"><span style="color: rgb(14, 158, 224);">I</span>service</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ps-5 me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white fs-4" href="/cart">cart<span class="badge badge-success p-1" id="cartCount">{{#if count includeZero=false}}{{count}}{{/if}}</span></a>
+        </li>
+       {{#if user}}
+        <li class="nav-item">
+          <a class="nav-link  text-white fs-4" href="/orders">order</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+    <div class="dropdown me-5">
+  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{#if user}}
+    {{user.name}}
+    {{else}}
+    Account
+    {{/if}}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {{#if user}}
+    <a class="dropdown-item" href="/logout">Logout</a>
+    {{else}}
+       <a class="dropdown-item" href="/login">Login</a>
+    {{/if}}
+ 
+  </div>
+</div>
+  </div>
+</nav>
+</body>
